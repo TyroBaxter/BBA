@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BBA.Application.Code;
+using StructureMap;
 
 namespace BBA.Application
 {
@@ -13,19 +14,28 @@ namespace BBA.Application
         static void Main(string[] args)
         {
             var loader = new PersonLoader();
-            var answers = new Answers();
+            var answers = new List<IPeopleAnswerer>
+            {
+                new GetAmountOfData(), new GetHeaviestPerson(), new GetLightestPerson(),
+                new GetMostPopularVehicleYear(), new GetMostPopulatedState(), new GetNumberOfMarriedWomen(),
+                new GetNumberOfMen(), new GetOldestPerson(), new GetTotalPeople()
+            };
+            var ioc = new Container();
+            ioc.Configure(c => c.Scan(s =>
+            {
+                s.TheCallingAssembly();
+                s.RegisterConcreteTypesAgainstTheFirstInterface();
+
+            }));
+
+            var answers2 = ioc.GetAllInstances<IPeopleAnswerer>();
 
             var people = loader.LoadPeopleFromFile();
 
-           // Console.WriteLine("A1: There are {0} people", GetTotalPeople.GetAnswer(people));
-            //Console.WriteLine("A2: There are {0} pieces of data", answers.GetAmountOfData(people));
-            //Console.WriteLine("A3: There are {0} men", answers.GetNumberOfMen(people));
-            //Console.WriteLine("A4: There are {0} married women", answers.GetNumberOfMarriedWomen(people));
-            //Console.WriteLine("A5: There most populated state is {0} ", answers.GetMostPopulatedState(people));
-            //Console.WriteLine("A6: The heaviest person is {0}", answers.GetHeaviestPerson(people));
-            //Console.WriteLine("A7: The lightest person is {0}", answers.GetLightestPerson(people));
-            //Console.WriteLine("A8: The oldest person is {0}", answers.GetOldestPerson(people));
-            //Console.WriteLine("A9: The most popular vehicle year is {0}", answers.GetMostPopularVehicleYear(people));
+            foreach (var answer in answers)
+            {
+                Console.WriteLine(answer.GetAnswer(people));
+            }
 
             Console.ReadLine();
         }

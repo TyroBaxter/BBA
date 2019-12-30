@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetAmountOfData : IPeopleAnswerer
+    public class GetNumberOfFloridians : IPeopleAnswerer
     {
-        /// <summary>
-        ///   This is "Answer 2" 
-        /// </summary>
-        /// <param name="people"></param>
-        /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
-            return "44";
+            var numFloridians = people.Where(x => x.StateFull == "Florida").Count().ToString();
+
+            return numFloridians;
         }
     }
 }

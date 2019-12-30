@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.7.1\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Answers.cs" />
     <Compile Include="Code\GetAmountOfData.cs" />
     <Compile Include="Code\GetHeaviestPerson.cs" />
     <Compile Include="Code\GetLightestPerson.cs" />
     <Compile Include="Code\GetMostPopularVehicleYear.cs" />
     <Compile Include="Code\GetMostPopulatedState.cs" />
+    <Compile Include="Code\GetNumberOfFloridians.cs" />
     <Compile Include="Code\GetNumberOfMarriedWomen.cs" />
     <Compile Include="Code\GetNumberOfMen.cs" />
     <Compile Include="Code\GetOldestPerson.cs" />
     <Compile Include="Code\GetTotalPeople.cs" />
+    <Compile Include="Code\IPeopleAnswerer.cs" />
     <Compile Include="Code\Person.cs" />
     <Compile Include="Code\PersonLoader.cs" />
     <Compile Include="Program.cs" />
@@ -62,6 +66,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Documents\namedata.csv" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

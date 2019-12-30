@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetNumberOfMarriedWomen
+    public class GetNumberOfMarriedWomen : IPeopleAnswerer
     {
         /// <summary>
         ///  This is "Answer 4"

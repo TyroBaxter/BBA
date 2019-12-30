@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetOldestPerson
+    public class GetOldestPerson : IPeopleAnswerer
     {
         /// <summary>
         ///  This is "Answer 8"

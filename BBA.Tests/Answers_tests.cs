@@ -263,4 +263,23 @@ namespace BBA.Tests
         [TestMethod]
         public void It_should_return_the_right_person() => Assert.AreEqual("2006", result);
     }
+
+    [TestClass]
+    public class When_getting_the_tenth_answer : AnswersTestBase<GetNumberOfFloridians>
+    {
+        private string result;
+
+        public When_getting_the_tenth_answer()
+        {
+            people.Add(new Person { StateFull = "Florida", GivenName = "Thor" });
+            people.Add(new Person { StateFull = "Florida", GivenName = "Magneto" });
+            people.Add(new Person { StateFull = "Rhode Island", GivenName = "Loki" });
+        }
+
+        [TestInitialize]
+        public void Because() => result = subject.GetAnswer(people);
+
+        [TestMethod]
+        public void It_should_return_the_right_number() => Assert.AreEqual("2", result);
+    }
 }
