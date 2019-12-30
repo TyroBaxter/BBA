@@ -15,7 +15,7 @@ namespace BBA.Application
             var answers = new Answers();
 
             var people = loader.LoadPeopleFromFile();
-
+//test test test
             Console.WriteLine("A1: There are {0} people", answers.GetTotalPeople(people));
             Console.WriteLine("A2: There are {0} pieces of data", answers.GetAmountOfData(people));
             Console.WriteLine("A3: There are {0} men", answers.GetNumberOfMen(people));
