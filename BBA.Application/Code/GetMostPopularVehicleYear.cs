@@ -6,17 +6,23 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetTotalPeople
+    public class GetMostPopularVehicleYear
     {
         /// <summary>
-        ///  This is "Answer 1"
+        ///  This is "Answer 9"
         /// </summary>
         /// <param name="people"></param>
         /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
+            //var listOfYears = 
 
-            return people.Count.ToString();
+            var carYearMode = people.GroupBy(n => Convert.ToInt32(n.Vehicle.Substring(0, 4))).
+                OrderByDescending(g => g.Count()).
+                Select(g => g.Key).FirstOrDefault().ToString();
+
+            return carYearMode;
+
         }
     }
 }

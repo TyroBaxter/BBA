@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetTotalPeople
+    public class GetOldestPerson
     {
         /// <summary>
-        ///  This is "Answer 1"
+        ///  This is "Answer 8"
         /// </summary>
         /// <param name="people"></param>
         /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
+            var oldestPerson = people.OrderByDescending(p => p.Age).First();
 
-            return people.Count.ToString();
+            return oldestPerson.GivenName;
         }
     }
 }

@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetTotalPeople
+    public class GetLightestPerson
     {
         /// <summary>
-        ///  This is "Answer 1"
+        ///  This is "Answer 7"
         /// </summary>
         /// <param name="people"></param>
         /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
+            var lightestPerson = people.OrderBy(p => p.Pounds).First();
 
-            return people.Count.ToString();
+            return lightestPerson.GivenName;
         }
     }
 }

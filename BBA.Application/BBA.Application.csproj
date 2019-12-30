@@ -45,6 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Answers.cs" />
+    <Compile Include="Code\GetAmountOfData.cs" />
+    <Compile Include="Code\GetHeaviestPerson.cs" />
+    <Compile Include="Code\GetLightestPerson.cs" />
+    <Compile Include="Code\GetMostPopularVehicleYear.cs" />
+    <Compile Include="Code\GetMostPopulatedState.cs" />
+    <Compile Include="Code\GetNumberOfMarriedWomen.cs" />
+    <Compile Include="Code\GetNumberOfMen.cs" />
+    <Compile Include="Code\GetOldestPerson.cs" />
     <Compile Include="Code\GetTotalPeople.cs" />
     <Compile Include="Code\Person.cs" />
     <Compile Include="Code\PersonLoader.cs" />

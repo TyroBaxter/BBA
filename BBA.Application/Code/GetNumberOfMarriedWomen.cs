@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetTotalPeople
+    public class GetNumberOfMarriedWomen
     {
         /// <summary>
-        ///  This is "Answer 1"
+        ///  This is "Answer 4"
         /// </summary>
         /// <param name="people"></param>
         /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
-
-            return people.Count.ToString();
+            return people.Where(x => x.Title == "Mrs.").Count().ToString();
         }
     }
 }

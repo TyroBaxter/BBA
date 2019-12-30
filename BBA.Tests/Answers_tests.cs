@@ -5,14 +5,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BBA.Tests
 {
-    public abstract class AnswersTestBase
+    public abstract class AnswersTestBase<T> where T:new()
     {
         protected readonly List<Person> people = new List<Person>();
-        protected readonly Answers subject = new Answers();
+        protected readonly T subject = new T();
     }
 
     [TestClass]
-    public class When_getting_the_first_answer : AnswersTestBase
+    public class When_getting_the_first_answer : AnswersTestBase<GetTotalPeople>
     {
         private string result;
 
@@ -25,14 +25,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetTotalPeople(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.AreEqual("4", result);
     }
 
     [TestClass]
-    public class When_getting_the_second_answer : AnswersTestBase
+    public class When_getting_the_second_answer : AnswersTestBase<GetAmountOfData>
     {
         private string result;
 
@@ -42,14 +42,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetAmountOfData(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.AreEqual("44", result);
     }
 
     [TestClass]
-    public class When_getting_the_third_answer_with_good_data : AnswersTestBase
+    public class When_getting_the_third_answer_with_good_data : AnswersTestBase<GetNumberOfMen>
     {
         private string result;
 
@@ -61,14 +61,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetNumberOfMen(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.AreEqual("2", result);
     }
 
     [TestClass]
-    public class When_getting_the_third_answer_with_bad_data : AnswersTestBase
+    public class When_getting_the_third_answer_with_bad_data : AnswersTestBase<GetNumberOfMen>
     {
         private string result;
 
@@ -80,14 +80,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetNumberOfMen(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.AreEqual("0", result);
     }
 
     [TestClass]
-    public class When_getting_the_fourth_answer_with_good_data : AnswersTestBase
+    public class When_getting_the_fourth_answer_with_good_data : AnswersTestBase<GetNumberOfMarriedWomen>
     {
         private string result;
 
@@ -104,14 +104,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetNumberOfMarriedWomen(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.AreEqual("3", result);
     }
 
     [TestClass]
-    public class When_getting_the_fourth_answer_with_bad_data : AnswersTestBase
+    public class When_getting_the_fourth_answer_with_bad_data : AnswersTestBase<GetNumberOfMarriedWomen>
     {
         private string result;
 
@@ -127,14 +127,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetNumberOfMarriedWomen(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.AreEqual("1", result);
     }
 
     [TestClass]
-    public class When_getting_the_fifth_answer_with_good_data : AnswersTestBase
+    public class When_getting_the_fifth_answer_with_good_data : AnswersTestBase<GetMostPopulatedState>
     {
         private string result;
 
@@ -151,14 +151,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetMostPopulatedState(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.AreEqual("Texas", result);
     }
 
     [TestClass]
-    public class When_getting_the_fifth_answer_with_bad_data : AnswersTestBase
+    public class When_getting_the_fifth_answer_with_bad_data : AnswersTestBase<GetMostPopulatedState>
     {
         private string result;
 
@@ -171,14 +171,14 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetMostPopulatedState(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_count_the_people() => Assert.IsFalse(string.IsNullOrEmpty(result));   // there isn't a correct answer in this case, so any answer is right
     }
 
     [TestClass]
-    public class When_getting_the_sixth_answer : AnswersTestBase
+    public class When_getting_the_sixth_answer : AnswersTestBase<GetHeaviestPerson>
     {
         private string result;
 
@@ -190,7 +190,7 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetHeaviestPerson(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_return_a_person() => Assert.IsNotNull(result);
@@ -200,7 +200,7 @@ namespace BBA.Tests
     }
 
     [TestClass]
-    public class When_getting_the_seventh_answer : AnswersTestBase
+    public class When_getting_the_seventh_answer : AnswersTestBase<GetLightestPerson>
     {
         private string result;
 
@@ -212,7 +212,7 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetLightestPerson(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_return_a_person() => Assert.IsNotNull(result);
@@ -222,7 +222,7 @@ namespace BBA.Tests
     }
 
     [TestClass]
-    public class When_getting_the_eighth_answer : AnswersTestBase
+    public class When_getting_the_eighth_answer : AnswersTestBase<GetOldestPerson>
     {
         private string result;
 
@@ -234,7 +234,7 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetOldestPerson(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_return_a_person() => Assert.IsNotNull(result);
@@ -244,7 +244,7 @@ namespace BBA.Tests
     }
 
     [TestClass]
-    public class When_getting_the_ninth_answer : AnswersTestBase
+    public class When_getting_the_ninth_answer : AnswersTestBase<GetMostPopularVehicleYear>
     {
         private string result;
 
@@ -258,7 +258,7 @@ namespace BBA.Tests
         }
 
         [TestInitialize]
-        public void Because() => result = subject.GetMostPopularVehicleYear(people);
+        public void Because() => result = subject.GetAnswer(people);
 
         [TestMethod]
         public void It_should_return_the_right_person() => Assert.AreEqual("2006", result);

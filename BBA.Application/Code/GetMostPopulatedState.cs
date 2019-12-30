@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace BBA.Application.Code
 {
-    public class GetTotalPeople
+    public class GetMostPopulatedState
     {
         /// <summary>
-        ///  This is "Answer 1"
+        ///  This is "Answer 5"
         /// </summary>
         /// <param name="people"></param>
         /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
+            var statePopulationMode = people.GroupBy(n => n.StateFull).
+                  OrderByDescending(g => g.Count()).
+                  Select(g => g.Key).FirstOrDefault();
 
-            return people.Count.ToString();
+            return statePopulationMode;
         }
     }
 }
