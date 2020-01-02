@@ -15,12 +15,12 @@ namespace BBA.Application.Code
         /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
-            //var listOfYears = 
+            Console.WriteLine($"There are {people.Count} people");
 
             var carYearMode = people.GroupBy(n => Convert.ToInt32(n.Vehicle.Substring(0, 4))).
                 OrderByDescending(g => g.Count()).
                 Select(g => g.Key).FirstOrDefault().ToString();
-
+            
             return carYearMode;
 
         }

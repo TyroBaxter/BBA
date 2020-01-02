@@ -57,9 +57,11 @@
     <Compile Include="Code\GetNumberOfMen.cs" />
     <Compile Include="Code\GetOldestPerson.cs" />
     <Compile Include="Code\GetTotalPeople.cs" />
+    <Compile Include="Code\ICsvLocator.cs" />
     <Compile Include="Code\IPeopleAnswerer.cs" />
+    <Compile Include="Code\IPersonLoader.cs" />
     <Compile Include="Code\Person.cs" />
-    <Compile Include="Code\PersonLoader.cs" />
+    <Compile Include="Code\CsvPersonLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

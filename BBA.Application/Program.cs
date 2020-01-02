@@ -13,7 +13,7 @@ namespace BBA.Application
     {
         static void Main(string[] args)
         {
-            var loader = new PersonLoader();
+            var loader = new CsvPersonLoader();
             var answers = new List<IPeopleAnswerer>
             {
                 new GetAmountOfData(), new GetHeaviestPerson(), new GetLightestPerson(),
@@ -30,7 +30,7 @@ namespace BBA.Application
 
             var answers2 = ioc.GetAllInstances<IPeopleAnswerer>();
 
-            var people = loader.LoadPeopleFromFile();
+            var people = loader.LoadPeople();
 
             foreach (var answer in answers)
             {

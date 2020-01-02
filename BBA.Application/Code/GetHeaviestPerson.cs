@@ -15,6 +15,8 @@ namespace BBA.Application.Code
         /// <returns></returns>
         public string GetAnswer(List<Person> people)
         {
+            Console.WriteLine($"There are {people.Count} people");
+
             var heaviestPerson = people.OrderBy(p => p.Pounds).Last();
 
             return heaviestPerson.GivenName;
